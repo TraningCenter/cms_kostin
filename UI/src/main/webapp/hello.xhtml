@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+        xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>JSF 2.0 Hello World</title>
+</h:head>
+<h:body>
+    <h2>JSF 2.0 Hello World Example - hello.xhtml</h2>
+    <h:form>
+        <p:commandButton value="Named" actionListener="#{bean.print()}"></p:commandButton>
+       <!-- <p:textEditor value="#{bean.text}"></p:textEditor>-->
+        <p:commandButton value="MangedBean" actionListener="#{imageParserService.parsePost('a')}"></p:commandButton>
+
+        <p:commandButton value="MangedProperty" actionListener="#{imageParserService.test()}"></p:commandButton>
+
+
+    </h:form>
+</h:body>
+</html>

@@ -1,0 +1,86 @@
+package kostin.controllers;
+
+import kostin.dto.ImageDto;
+import kostin.dto.PostDto;
+import kostin.mappers.ImageMapper;
+import kostin.mappers.PostMapper;
+import kostin.model.Image;
+import kostin.model.Post;
+import kostin.services.PostService;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+@RestController
+public class PostController {
+
+    private PostService postService;
+
+    @Autowired
+    public PostController(PostService postService) {
+        this.postService = postService;
+    }
+
+    @RequestMapping("/post/{id}")
+    public PostDto getPost(@PathVariable Integer id) {//REST Endpoint.
+
+        PostDto post = postService.getPost(id);
+
+        return post;
+    }
+
+    @RequestMapping("/post/test")
+    public Integer test() {//REST Endpoint.
+        List<ImageDto> images = new ArrayList<>();
+        for (int i=0;i<3;i++){
+            ImageDto img = new ImageDto(i,i);
+            images.add(img);
+        }
+        PostDto postDto = new PostDto(null,new Date(),"title",10,images);
+       return postService.createPost(postDto);
+
+    }
+
+    @RequestMapping(value = "/post", //
+            method = RequestMethod.POST, //
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    public Integer addPost(@RequestBody PostDto post) {
+
+        return postService.createPost(post);
+
+    }
+
+    // URL:
+    // http://localhost:8080/SpringMVCRESTful/employee
+    // http://localhost:8080/SpringMVCRESTful/employee.xml
+    // http://localhost:8080/SpringMVCRESTful/employee.json
+    @RequestMapping(value = "/post", //
+            method = RequestMethod.PUT, //
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    public void updatePost(@RequestBody PostDto post) {
+
+         postService.updatePost(post);
+    }
+
+    // URL:
+    // http://localhost:8080/SpringMVCRESTful/employee/{empNo}
+    @RequestMapping(value = "/post/{id}", //
+            method = RequestMethod.DELETE, //
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    public void deletePost(@PathVariable("id") Integer id) {
+        postService.deletePost(id);
+    }
+}
+

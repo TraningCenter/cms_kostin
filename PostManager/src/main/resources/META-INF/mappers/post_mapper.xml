@@ -1,0 +1,46 @@
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kostin.mappers.PostMapper">
+    <resultMap id="post" type="kostin.model.Post">
+        <id property="id" column="id"/>
+        <result property="date" column="date" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+        <result property="title" column="title"/>
+        <result property="textId" column="text_id"/>
+        <collection property="images" ofType="kostin.model.Image" resultMap="ImagesResult"/>
+    </resultMap>
+
+    <resultMap id="ImagesResult" type="kostin.model.Image">
+        <id property="imageId" column="image_id"/>
+        <result property="cmId" column="cm_id"/>
+        <result property="position" column="position"/>
+    </resultMap>
+
+
+    <insert id="createPost" parameterType="kostin.model.Post" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
+        INSERT INTO POSTS (date ,title,text_id)
+        VALUES
+        (#{date},#{title},#{textId});
+      <!--  <selectKey keyProperty="id" keyColumn="id" resultType="int" order="AFTER">
+            SELECT currval('posts_id_seq') ;
+        </selectKey> -->
+    </insert>
+
+    <update id = "updatePost" parameterType = "kostin.model.Post">
+        UPDATE POSTS SET date = #{date}, title = #{title}, text_id = #{textId} WHERE id = #{id};
+    </update>
+
+    <delete id = "deletePostById" parameterType = "int">
+        DELETE from POSTS WHERE Id = #{id};
+    </delete>
+
+
+    <select id="getPostById" resultMap="post" parameterType="java.lang.Integer">
+        select
+        p.id, p.date, p.title, p.text_id, i.image_id,i.cm_id, i.position
+        FROM  posts  as p
+        JOIN post_image  as pi
+        on p.id = pi.post_id
+        JOIN  images  as i
+        on i.image_id = pi.image_id
+         where p.id = #{id}
+    </select>
+</mapper>

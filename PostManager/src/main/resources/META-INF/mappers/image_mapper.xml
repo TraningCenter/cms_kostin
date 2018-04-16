@@ -1,0 +1,20 @@
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kostin.mappers.ImageMapper">
+
+<insert id="createImage" parameterType="kostin.model.Image" keyColumn="image_id" keyProperty="imageId" useGeneratedKeys="true" >
+    INSERT INTO images (cm_id,position)
+    VALUES
+    (#{cmId},#{position})
+    <selectKey keyProperty="imageId" keyColumn="image_id" resultType="int" order="AFTER">
+        SELECT currval('images_image_id_seq');
+    </selectKey>
+</insert>
+
+<update id = "updateImage" parameterType = "kostin.model.Image">
+UPDATE images SET cm_id=#{cmId}, position = #{position} WHERE id = #{id};
+</update>
+
+<delete id = "deleteImageById" parameterType = "int">
+DELETE from images WHERE Id = #{id};
+</delete>
+</mapper>
