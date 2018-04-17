@@ -21,9 +21,13 @@ public class ImageService {
         this.driveService = driveService;
     }
 
-    public Integer createImage(Image imageDto){
+    public Integer createImage(byte[] bytes){
 
-        return imageBufferService.addToBuffer(imageDto);
+        Image image= new Image();
+        image.setBytes(bytes);
+        Integer id=  imageBufferService.addToBuffer(image);
+        System.out.println("id "+id);
+        return id;
     }
 
     public byte[] getImage(Integer id){

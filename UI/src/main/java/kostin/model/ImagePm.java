@@ -1,21 +1,18 @@
-package kostin.dto;
+package kostin.model;
 
-public class ImageDto {
+public class ImagePm {
 
     private Integer cmId;
 
     private Integer position;
 
-    public ImageDto(Integer cmId, Integer position) {
+    public ImagePm() {
+    }
+
+    public ImagePm(Integer cmId, Integer position) {
         this.cmId = cmId;
         this.position = position;
     }
-
-
-
-    public ImageDto() {
-    }
-
 
     public Integer getCmId() {
         return cmId;
@@ -31,5 +28,13 @@ public class ImageDto {
 
     public void setPosition(Integer position) {
         this.position = position;
+    }
+
+    @Override
+    public String toString() {
+        return "ImagePm{" +
+                "cmId=" + cmId +
+                ", position=" + position +
+                '}';
     }
 }

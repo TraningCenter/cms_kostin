@@ -1,12 +1,10 @@
-package kostin.dto;
-
-import kostin.model.Image;
+package kostin.model;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class PostDto {
+public class PostPm {
 
     private Integer id ;
 
@@ -18,11 +16,12 @@ public class PostDto {
 
     private Integer textId;
 
-    private List<ImageDto> images = new ArrayList<>();
+    private List<ImagePm> images= new ArrayList<>();
 
+    public PostPm() {
+    }
 
-
-    public PostDto(Integer id, Date date, String title, Integer textId, List<ImageDto> images) {
+    public PostPm(Integer id, Date date, String title, Integer textId, List<ImagePm> images) {
         this.id = id;
         this.date = date;
         this.title = title;
@@ -30,7 +29,11 @@ public class PostDto {
         this.images = images;
     }
 
-    public PostDto() {
+    public PostPm(Integer id, Date date, String title, Integer textId) {
+        this.id = id;
+        this.date = date;
+        this.title = title;
+        this.textId = textId;
     }
 
     public Integer getId() {
@@ -65,11 +68,22 @@ public class PostDto {
         this.textId = textId;
     }
 
-    public List<ImageDto> getImages() {
+    public List<ImagePm> getImages() {
         return images;
     }
 
-    public void setImages(List<ImageDto> images) {
+    public void setImages(List<ImagePm> images) {
         this.images = images;
+    }
+
+    @Override
+    public String toString() {
+        return "PostPm{" +
+                "id=" + id +
+                ", date=" + date +
+                ", title='" + title + '\'' +
+                ", textId=" + textId +
+                ", images=" + images +
+                '}';
     }
 }

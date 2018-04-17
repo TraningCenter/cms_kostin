@@ -1,8 +1,14 @@
 CREATE TABLE texts
 (
   id SERIAL PRIMARY KEY ,
-  content VARCHAR (3000)
+  content VARCHAR (10000)
 );
 
-INSERT INTO texts (content)
-VALUES ('some text');
+CREATE TABLE images
+(
+  id SERIAL PRIMARY KEY,
+  googleId VARCHAR (1000),
+  hash VARCHAR (1000),
+  name VARCHAR (50)
+)
+

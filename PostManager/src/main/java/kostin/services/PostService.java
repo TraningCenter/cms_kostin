@@ -1,11 +1,14 @@
 package kostin.services;
 
 import kostin.dao.PostDao;
+import kostin.dto.ImageDto;
 import kostin.dto.PostDto;
 import kostin.dtoMappers.PostDtoMapper;
 import kostin.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 
 @Service
 public class PostService {
@@ -20,6 +23,9 @@ public class PostService {
     public PostDto getPost(int id){
 
         PostDto postDto = PostDtoMapper.INSTANCE.postToPostDto(postDao.getPost(id));
+        if(postDto.getImages()==null){
+            postDto.setImages(new ArrayList<ImageDto>());
+        }
         return postDto;
     }
 

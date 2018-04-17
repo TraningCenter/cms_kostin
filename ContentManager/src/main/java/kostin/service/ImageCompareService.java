@@ -18,6 +18,9 @@ public class ImageCompareService {
 
 
     private BufferedImage resizeImage(BufferedImage originalImage, int width, int height) {
+        if (originalImage!=null){
+            System.out.println("img width"+originalImage.getWidth());
+        }else System.out.println("img =null");
         int type = originalImage.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
         BufferedImage resizedImage = new BufferedImage(width, height, type);
         Graphics2D g = resizedImage.createGraphics();
@@ -40,8 +43,12 @@ public class ImageCompareService {
 
     public String getHash(byte[] bytes) throws Exception {
 
+            System.out.println("Bytes"+bytes.toString());
         BufferedImage img = ImageIO.read(new ByteArrayInputStream(bytes));
-
+        if (img!=null) {
+            System.out.println(img.getMinX());
+        }else
+            System.out.println("Img = null");
 
                 /* 1. Reduce size.
                  * Like Average Hash, pHash starts with a small image.

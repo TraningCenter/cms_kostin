@@ -38,17 +38,7 @@ public class PostController {
         return post;
     }
 
-    @RequestMapping("/post/test")
-    public Integer test() {//REST Endpoint.
-        List<ImageDto> images = new ArrayList<>();
-        for (int i=0;i<3;i++){
-            ImageDto img = new ImageDto(i,i);
-            images.add(img);
-        }
-        PostDto postDto = new PostDto(null,new Date(),"title",10,images);
-       return postService.createPost(postDto);
 
-    }
 
     @RequestMapping(value = "/post", //
             method = RequestMethod.POST, //
@@ -56,7 +46,8 @@ public class PostController {
     @ResponseBody
     public Integer addPost(@RequestBody PostDto post) {
 
-        return postService.createPost(post);
+        int id =postService.createPost(post);
+        return id;
 
     }
 

@@ -45,7 +45,7 @@ public class ImageBufferService {
 
     private Integer checkForUnique(String hash) {
         List<ImageEntity> images = imageRepository.findByHash(hash);
-        if (images.size() > 0) {
+        if (images.size() == 0) {
             return 0;
         } else {
             return images.get(0).getId();

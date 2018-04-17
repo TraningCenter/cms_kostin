@@ -1,6 +1,6 @@
 package kostin.model;
 
-public class Image {
+public class Image implements Comparable<Image>{
 
     private byte[] bytes;
 
@@ -32,5 +32,18 @@ public class Image {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    @Override
+    public int compareTo(Image o) {
+        if (this.getHash().equals(o.getHash())){
+            return 0;
+        }
+       if (this.getHash().length()>o.getHash().length()){
+           return 1;
+       }else {
+           return -1;
+       }
     }
 }

@@ -1,23 +1,16 @@
 package kostin.model;
 
-import javax.persistence.*;
+public class TextCm {
 
-@Entity
-@Table(name="texts")
-public class Text {
-
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
     private String content;
 
-    public Text() {
+    public TextCm() {
     }
 
-    public Text(Integer id,String content) {
-        this.id=id;
+    public TextCm(Integer id, String content) {
+        this.id = id;
         this.content = content;
     }
 
@@ -35,5 +28,13 @@ public class Text {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    @Override
+    public String toString() {
+        return "TextCm{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                '}';
     }
 }

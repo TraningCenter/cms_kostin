@@ -26,12 +26,15 @@ public class ImageController {
 
 
     @RequestMapping(value = "/image", //
-            method = RequestMethod.POST, //
-            produces = {MediaType.APPLICATION_JSON_VALUE})
+            method = RequestMethod.POST) //
+          //  produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
     @ResponseBody
-    public Integer addImage(@RequestBody Image image) {
+    public Integer addImage(@RequestBody byte[] bytes) {
 
-        return imageService.createImage(image);
+
+         Integer id= imageService.createImage(bytes);
+         System.out.println("CM image id"+id);
+         return id;
 
     }
 
