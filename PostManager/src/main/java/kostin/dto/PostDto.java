@@ -72,4 +72,15 @@ public class PostDto {
     public void setImages(List<ImageDto> images) {
         this.images = images;
     }
+
+    @Override
+    public String toString() {
+        return "PostDto{" +
+                "id=" + id +
+                ", date=" + date +
+                ", title='" + title + '\'' +
+                ", textId=" + textId +
+                ", images=" + images +
+                '}';
+    }
 }

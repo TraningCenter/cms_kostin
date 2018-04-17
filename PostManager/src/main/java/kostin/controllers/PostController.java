@@ -51,10 +51,7 @@ public class PostController {
 
     }
 
-    // URL:
-    // http://localhost:8080/SpringMVCRESTful/employee
-    // http://localhost:8080/SpringMVCRESTful/employee.xml
-    // http://localhost:8080/SpringMVCRESTful/employee.json
+
     @RequestMapping(value = "/post", //
             method = RequestMethod.PUT, //
             produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -64,8 +61,7 @@ public class PostController {
          postService.updatePost(post);
     }
 
-    // URL:
-    // http://localhost:8080/SpringMVCRESTful/employee/{empNo}
+
     @RequestMapping(value = "/post/{id}", //
             method = RequestMethod.DELETE, //
             produces = {MediaType.APPLICATION_JSON_VALUE})

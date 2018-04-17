@@ -32,4 +32,12 @@ public class ImageDto {
     public void setPosition(Integer position) {
         this.position = position;
     }
+
+    @Override
+    public String toString() {
+        return "ImageDto{" +
+                "cmId=" + cmId +
+                ", position=" + position +
+                '}';
+    }
 }

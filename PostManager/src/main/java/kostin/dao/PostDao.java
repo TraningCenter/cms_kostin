@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 
 @Repository
 public class PostDao {
@@ -28,7 +29,8 @@ public class PostDao {
     }
 
     public Post getPost(int id){
-        return  postMapper.getPostById(id);
+        Post post = postMapper.getPostById(id);
+        return post;
     }
 
     public Integer createPost(Post post){

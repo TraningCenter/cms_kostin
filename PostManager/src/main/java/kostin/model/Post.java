@@ -1,5 +1,6 @@
 package kostin.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class Post {
 
     private Integer textId;
 
-    private List<Image> images;
+    private List<Image> images=new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -63,5 +64,16 @@ public class Post {
 
     public void setTextId(Integer textId) {
         this.textId = textId;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", date=" + date +
+                ", title='" + title + '\'' +
+                ", textId=" + textId +
+                ", images=" + images +
+                '}';
     }
 }

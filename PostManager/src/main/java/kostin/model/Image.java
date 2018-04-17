@@ -34,4 +34,13 @@ public class Image {
     public void setCmId(Integer cmId) {
         this.cmId = cmId;
     }
+
+    @Override
+    public String toString() {
+        return "Image{" +
+                "imageId=" + imageId +
+                ", cmId=" + cmId +
+                ", position=" + position +
+                '}';
+    }
 }

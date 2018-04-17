@@ -37,9 +37,9 @@
         select
         p.id, p.date, p.title, p.text_id, i.image_id,i.cm_id, i.position
         FROM  posts  as p
-        JOIN post_image  as pi
+        left JOIN post_image  as pi
         on p.id = pi.post_id
-        JOIN  images  as i
+        left JOIN  images  as i
         on i.image_id = pi.image_id
          where p.id = #{id}
     </select>
